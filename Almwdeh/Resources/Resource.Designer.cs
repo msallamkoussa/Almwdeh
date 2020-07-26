@@ -106,6 +106,24 @@ namespace Almwdeh.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to يرجى إدخال بريدك الإلكتروني للبحث عن حسابك..
+        /// </summary>
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to البحث عن حسابك.
+        /// </summary>
+        public static string ForgotPasswordHeader {
+            get {
+                return ResourceManager.GetString("ForgotPasswordHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to تسجيل الدخول.
         /// </summary>
         public static string LoginForm {
@@ -120,6 +138,15 @@ namespace Almwdeh.Resources {
         public static string LoginSuccessfull {
             get {
                 return ResourceManager.GetString("LoginSuccessfull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تسجيل خروج.
+        /// </summary>
+        public static string LogOut {
+            get {
+                return ResourceManager.GetString("LogOut", resourceCulture);
             }
         }
         
@@ -151,11 +178,47 @@ namespace Almwdeh.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to تاكيد كلمة السر.
+        /// </summary>
+        public static string PlaceHolderReEnterPassword {
+            get {
+                return ResourceManager.GetString("PlaceHolderReEnterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اسم المستخدم.
         /// </summary>
         public static string PlaceHolderUserName {
             get {
                 return ResourceManager.GetString("PlaceHolderUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تغيير كلمة السر.
+        /// </summary>
+        public static string ResetPassowrdHeader {
+            get {
+                return ResourceManager.GetString("ResetPassowrdHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to إعادة الإرسال.
+        /// </summary>
+        public static string ResetPasswordButton {
+            get {
+                return ResourceManager.GetString("ResetPasswordButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  حفظ  المعلومات.
+        /// </summary>
+        public static string save {
+            get {
+                return ResourceManager.GetString("save", resourceCulture);
             }
         }
         

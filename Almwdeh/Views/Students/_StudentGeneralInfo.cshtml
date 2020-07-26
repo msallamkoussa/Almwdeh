@@ -1,0 +1,317 @@
+﻿
+<style>
+    .kv-avatar .krajee-default.file-preview-frame, .kv-avatar .krajee-default.file-preview-frame:hover {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        text-align: center;
+    }
+
+    .kv-avatar {
+        display: inline-block;
+    }
+
+        .kv-avatar .file-input {
+            display: table-cell;
+            width: 213px;
+        }
+
+    .kv-reqd {
+        color: red;
+        font-family: monospace;
+        font-weight: normal;
+    }
+</style>
+
+<div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>@Almwdeh.Resources.StudentResource.GeneralInfo</h2>
+            <ul class="nav navbar-left" style="display:inline-grid;text-align:end">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+
+
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br />
+            <form id="GeneralInfo" data-parsley-validate class="form-horizontal" style="direction:rtl;font-size:large" onsubmit="AddStudentGeneralInfoForm()" method="post">
+
+                <div class="row">
+
+                    <div id="codiv" class="col-md-6">
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.FirstName <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" id="FirstName" class="form-control " required>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.LastName <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" id="LastName" name="LastName" required="required" class="form-control">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.FatherName <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" id="FatherName" required="required" class="form-control ">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.MotherName <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" id="MotherName" required="required" class="form-control ">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.BirthDate <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input id="BirthDate" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                <script>
+                                    function timeFunctionLong(input) {
+                                        setTimeout(function () {
+                                            input.type = 'text';
+                                        }, 60000);
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.BirthPlace <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" id="BirthPlace" required="required" class="form-control ">
+                            </div>
+                        </div>
+                        <div class="item form-group" style="text-align: right;vertical-align:middle;display: flex;/* justify-content: center; */align-items: center;">
+
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">@Almwdeh.Resources.StudentResource.Sex</label>
+                            <div class="col-md-8 col-sm-8 ">
+
+                                @Almwdeh.Resources.StudentResource.male:
+                                <input type="radio" name="gender" id="genderM" value="True" checked="" required /> @Almwdeh.Resources.StudentResource.female:
+                                <input type="radio" name="gender" id="genderF" value="False" />
+
+                            </div>
+                        </div>
+                        <!-- #region SampleRegion -->
+                        <!-- #endregion -->
+
+                    </div>
+                    <div id="imgdiv" class="col-md-6">
+                        <div class="col-12 text-center">
+                            <div class="kv-avatar">
+                                <div class="file-loading">
+                                    <input id="imgupload" name="imgupload" type="file" required="required">
+
+
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/20625/avatar-bg.png" alt="Your Avatar"><h6 class="text-muted">Click to select</h6>
+
+
+                                </div>
+                            </div>
+                            <div class="kv-avatar-hint">
+                                <small>Select file < 1500 KB</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.MobileSyria <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" id="MobileSyria" required="required" class="form-control" data-inputmask="'mask':'(+\\963) 999-999-999'" style="direction:ltr">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.MobileIran <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" id="MobileIran" required="required" class="form-control" data-inputmask="'mask':'(+\\98) 999-999-9999'" style="direction:ltr">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.WhatsappNumber <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" id="WhatsappNumber" required="required" class="form-control" data-inputmask="'mask':'(+\\999) 999-999-9999','mask':'(+\\999) 999-9999'" style="direction:ltr">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.CitySyria <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                @Html.DropDownList("CitySyria", null, htmlAttributes: new { @class = "form-control" })
+
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.AddressSyria <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <textarea rows="5" id="AddressSyria" required="required" class="form-control"></textarea>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.CityIran <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                @Html.DropDownList("CityIran", null, htmlAttributes: new { @class = "form-control" })
+
+
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.AddressIran <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <textarea rows="5" id="AddressIran" required="required" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="item form-group" style="text-align: right;vertical-align:middle;display: flex;/* justify-content: center; */align-items: center;">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">@Almwdeh.Resources.StudentResource.MaritalStatus</label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <div id="MaritalStatus">
+                                    @Almwdeh.Resources.StudentResource.No:
+                                    <input type="radio" id="MaritalStatusNo" name="MarriageStatus" value="false" checked>
+                                    @Almwdeh.Resources.StudentResource.yes:
+                                    <input type="radio" id="MaritalStatusYes" name="MarriageStatus" value="true">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="family" style="display: none;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                    @Almwdeh.Resources.StudentResource.WifeName <span class="required">*</span>
+                                </label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <input type="text" id="WifeName" class="form-control">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                    @Almwdeh.Resources.StudentResource.ChildernNumber <span class="required">*</span>
+                                </label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <input type="number" id="ChildernNumber" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                    @Almwdeh.Resources.StudentResource.WifeDetails <span class="required">*</span>
+                                </label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <input type="text" id="WifeDetails" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" value=@Almwdeh.Common.MySession.Current.UserID.ToString() id="UserAccessIDs" />
+
+                <div class="ln_solid"></div>
+                <div class="item form-group" style="direction:ltr;float:left">
+                    <div class="col-md-6 col-sm-6 offset-md-3" >
+                       
+                        <input type="submit" class="btn btn-primary" value="@Almwdeh.Resources.Resource.save" >
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+@*<script type="text/javascript">
+    $(function () {
+
+        $("#CityIran").chosen();
+    });
+</script>*@
+
+<script>
+    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
+        'onclick="alert(\'Call your custom code here.\')">' +
+        '<i class="glyphicon glyphicon-tag"></i>' +
+        '</button>';
+    $("#imgupload").fileinput({
+        overwriteInitial: true,
+        maxFileSize: 1500,
+        showClose: false,
+        showCaption: false,
+        showBrowse: false,
+        browseOnZoneClick: true,
+        removeLabel: '',
+        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+        removeTitle: 'Cancel or reset changes',
+        elErrorContainer: '#kv-avatar-errors-2',
+        msgErrorClass: 'alert alert-block alert-danger',
+        defaultPreviewContent: '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/20625/avatar-bg.png" alt="Your Avatar"><h6 class="text-muted">Click to select</h6>',
+      // layoutTemplates: { main2: '{preview} ' + btnCust + ' {remove} {browse}' },
+        allowedFileExtensions: ["jpg", "png", "gif"],
+    });
+
+
+</script>
+
+
+
+

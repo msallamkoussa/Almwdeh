@@ -1,0 +1,186 @@
+﻿
+
+@model Almwdeh.Models.StudentsTbl
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="right_col" role="main">
+    <div class="row">
+
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>
+                        @Almwdeh.Resources.StudentResource.EditExtraInfo
+                    </h2>
+                    <ul class="nav navbar-left" style="display:inline-grid;text-align:end">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form id="EditExtraInfo" data-parsley-validate class="form-horizontal" style="direction:rtl;font-size:large" onsubmit="EditStudentExtraInfoForm()" method="post">
+
+                        <div class="row">
+
+                            <div class="col-md-6 col-sm-6">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.Skills <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 " >
+                                        @Html.DropDownList("Skills", (MultiSelectList)ViewBag.Skills, htmlAttributes: new { @class = "form-control chzn-select", @multiple = "multiple" })
+                                       
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.PreviousJobs <span class="required"></span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="PreviousJobs" class="form-control" value="@Model.PreviousJobs">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group" style="text-align: right;vertical-align:middle;display: flex;/* justify-content: center; */align-items: center;">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">@Almwdeh.Resources.StudentResource.ShahidFamily</label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <div id="MaritalStatus">
+                                            @Almwdeh.Resources.StudentResource.No:
+                                            <input type="radio" id="ShahidFamilyNo" name="ShahidFamily" value="false" checked>
+                                            @Almwdeh.Resources.StudentResource.yes:
+                                            <input type="radio" id="ShahidFamilyYes" name="ShahidFamily" value="true">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="Shahid" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                            @Almwdeh.Resources.StudentResource.ShahidRelationship <span class="required"></span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input type="text" id="ShahidRelationship" class="form-control" value="@Model.ShahidRelationship">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.TheIdentifier <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        @Html.DropDownList("TheIdentifier", null, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" value=@Almwdeh.Common.MySession.Current.UserID.ToString() id="UserAccessIDs" />
+
+                        <div class="ln_solid"></div>
+                        <div class="item form-group" style="direction:ltr;float:left">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+
+                                <input type="submit" class="btn btn-primary" value="@Almwdeh.Resources.Resource.save">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
+    </div>
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+
+
+        <script>
+            function EditStudentExtraInfoForm() {
+                alert($('#UserAccessIDs').val());
+                if ($('#PreviousJobs').val() == '') {
+                    alert("قم بملئ جميع الحقول");
+                    return;
+                }
+
+                if ($("#EditExtraInfo input[name='ShahidFamily']:checked").val() == "true") {
+                    if ($('#ShahidRelationship').val() == '') {
+                        alert("قم بملئ جميع الحقول");
+                        return;
+                    }
+                }
+
+
+
+                var formData = new FormData();
+
+                formData.append("UserAccessIDs", $('#UserAccessIDs').val());
+                formData.append("Skills", $('#Skills').val());
+                formData.append("PreviousJobs", $('#PreviousJobs').val());
+                formData.append("ShahidFamily", $("#EditExtraInfo input[name='ShahidFamily']:checked").val());
+                formData.append("ShahidRelationship", $('#ShahidRelationship').val());
+                formData.append("TheIdentifier", $('#TheIdentifier').val());
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/Students/AddStudent",
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        alert(result.message);
+                    },
+                    error: function (result) {
+                        alert(result.message);
+                    }
+                })
+            }
+        </script>
+
+        <script>
+            $("input[name='ShahidFamily']").on('click', function () {
+
+                var inputValue = $(this).attr("value");
+
+                if (inputValue == 'false') {
+                    $('#Shahid').css('display', 'none');
+                    $("#ShahidRelationship").prop('required', false);
+
+                } else {
+                    $('#Shahid').css('display', 'block');
+                    $("#ShahidRelationship").prop('required', true);
+
+                }
+            });
+
+            $(function () {
+                $(".chzn-select").chosen({ rtl: true });
+
+            });
+              var content= @Html.Raw(Json.Encode(ViewData["SelectedSkills"]));
+            $("#Skills").val(content);
+
+        </script>

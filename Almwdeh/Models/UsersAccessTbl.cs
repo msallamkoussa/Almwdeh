@@ -14,6 +14,13 @@ namespace Almwdeh.Models
     
     public partial class UsersAccessTbl
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UsersAccessTbl()
+        {
+            this.MessagesTbls = new HashSet<MessagesTbl>();
+            this.MessagesTbls1 = new HashSet<MessagesTbl>();
+        }
+    
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -23,7 +30,12 @@ namespace Almwdeh.Models
         public Nullable<int> AccessFailedCount { get; set; }
         public Nullable<bool> LockoutEnabled { get; set; }
         public Nullable<bool> Verified { get; set; }
+        public string ResetPasswordCode { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MessagesTbl> MessagesTbls { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MessagesTbl> MessagesTbls1 { get; set; }
         public virtual UsersRolesTbl UsersRolesTbl { get; set; }
     }
 }

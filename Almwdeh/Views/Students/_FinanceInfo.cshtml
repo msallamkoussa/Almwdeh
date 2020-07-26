@@ -1,0 +1,150 @@
+﻿
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>@Almwdeh.Resources.StudentResource.FinanceInfo</h2>
+            <ul class="nav navbar-left" style="display:inline-grid;text-align:end">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+            
+               
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br />
+            <form id="FinanceInfo" data-parsley-validate class="form-horizontal" style="direction:rtl;font-size:large" onsubmit="AddStudentFinanceInfoForm()" method="post">
+
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                       
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.FinancialStatus <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" id="FinancialStatus" required="required" class="form-control" style="direction:ltr">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="item form-group" style="text-align: right;vertical-align:middle;display: flex;/* justify-content: center; */align-items: center;">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">@Almwdeh.Resources.StudentResource.NeedMonthlyAid</label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <div id="MaritalStatus">
+                                    @Almwdeh.Resources.StudentResource.No:
+                                    <input type="radio" id="MaritalStatusNo" name="NeedMonthlyAid" value="false" checked>
+                                    @Almwdeh.Resources.StudentResource.yes:
+                                    <input type="radio" id="MaritalStatusYes" name="NeedMonthlyAid" value="true">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="BankInfo"  style="display: none;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                    @Almwdeh.Resources.StudentResource.BankAccountNumber <span class="required">*</span>
+                                </label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <input type="text" id="BankAccountNumber" required="required" class="form-control">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                    @Almwdeh.Resources.StudentResource.BankCardNumber <span class="required">*</span>
+                                </label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <input type="text" id="BankCardNumber" required="required" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                    @Almwdeh.Resources.StudentResource.BankShibaNumber <span class="required"></span>
+                                </label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <input type="text" id="BankShibaNumber"  class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="item form-group" style="text-align: right;vertical-align:middle;display: flex;/* justify-content: center; */align-items: center;">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">@Almwdeh.Resources.StudentResource.Working</label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <div id="MaritalStatus">
+                                    @Almwdeh.Resources.StudentResource.No:
+                                    <input type="radio" id="MaritalStatusNo" name="Working" value="false" checked>
+                                    @Almwdeh.Resources.StudentResource.yes:
+                                    <input type="radio" id="MaritalStatusYes" name="Working" value="true">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="WorkDeatils" class="row" style="display: none;">
+                    <div class="col-md-6">
+                       
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.WorkDetails <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <textarea  id="WorkDetails" required="required" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+                <input type="hidden" value=@Almwdeh.Common.MySession.Current.UserID.ToString() id="UserAccessIDs" />
+
+                <div class="ln_solid"></div>
+                <div class="item form-group" style="direction:ltr;float:left">
+                    <div class="col-md-6 col-sm-6 offset-md-3">
+
+                        <input type="submit" class="btn btn-primary" value="@Almwdeh.Resources.Resource.save">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $("input[name='NeedMonthlyAid']").on('click', function () {
+
+        var inputValue = $(this).attr("value");
+
+        if (inputValue == 'false') {
+            $('#BankInfo').css('display', 'none');
+        } else
+            $('#BankInfo').css('display', 'block');
+
+    });
+    $("input[name='Working']").on('click', function () {
+
+        var inputValue = $(this).attr("value");
+
+        if (inputValue == 'false') {
+            $('#WorkDeatils').css('display', 'none');
+        } else
+            $('#WorkDeatils').css('display', 'block');
+
+    });
+</script>

@@ -25,10 +25,25 @@ namespace Almwdeh.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ComboAcademicDegree> ComboAcademicDegrees { get; set; }
+        public virtual DbSet<ComboCityIranTbl> ComboCityIranTbls { get; set; }
+        public virtual DbSet<ComboCitySyriaTbl> ComboCitySyriaTbls { get; set; }
+        public virtual DbSet<ComboDoctrineTbl> ComboDoctrineTbls { get; set; }
+        public virtual DbSet<ComboFieldOfStudy> ComboFieldOfStudies { get; set; }
+        public virtual DbSet<ComboFinancialStatu> ComboFinancialStatus { get; set; }
+        public virtual DbSet<ComboGraduationStatue> ComboGraduationStatues { get; set; }
+        public virtual DbSet<ComboScholarshipGroup> ComboScholarshipGroups { get; set; }
+        public virtual DbSet<ComboTheIdentifier> ComboTheIdentifiers { get; set; }
+        public virtual DbSet<ComboUniversityName> ComboUniversityNames { get; set; }
+        public virtual DbSet<GeneralInformationTbl> GeneralInformationTbls { get; set; }
+        public virtual DbSet<MessageAttachmentsTbl> MessageAttachmentsTbls { get; set; }
+        public virtual DbSet<MessagesTbl> MessagesTbls { get; set; }
         public virtual DbSet<StudentsTbl> StudentsTbls { get; set; }
         public virtual DbSet<StudentsUniversitiesSemestersTbl> StudentsUniversitiesSemestersTbls { get; set; }
         public virtual DbSet<StudentsUniversitiesTbl> StudentsUniversitiesTbls { get; set; }
         public virtual DbSet<UsersAccessTbl> UsersAccessTbls { get; set; }
         public virtual DbSet<UsersRolesTbl> UsersRolesTbls { get; set; }
+        public virtual DbSet<ComboShahidRelationship> ComboShahidRelationships { get; set; }
+        public virtual DbSet<ComboSkille> ComboSkilles { get; set; }
     }
 }

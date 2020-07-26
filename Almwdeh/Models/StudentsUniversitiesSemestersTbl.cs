@@ -23,5 +23,7 @@ namespace Almwdeh.Models
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> LastEditDate { get; set; }
         public Nullable<bool> EditVerified { get; set; }
+    
+        public virtual StudentsUniversitiesTbl StudentsUniversitiesTbl { get; set; }
     }
 }

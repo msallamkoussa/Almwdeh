@@ -1,0 +1,516 @@
+﻿@model Almwdeh.Models.StudentsTbl
+
+<style>
+    .kv-avatar .krajee-default.file-preview-frame, .kv-avatar .krajee-default.file-preview-frame:hover {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        text-align: center;
+    }
+
+    .kv-avatar {
+        display: inline-block;
+    }
+
+        .kv-avatar .file-input {
+            display: table-cell;
+            width: 213px;
+        }
+
+    .kv-reqd {
+        color: red;
+        font-family: monospace;
+        font-weight: normal;
+    }
+</style>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var url = Url.Content(Model.Photo);
+
+}
+<div class="right_col" role="main">
+    <div class="row">
+        <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>@Almwdeh.Resources.StudentResource.EditGeneralInfo</h2>
+                    <ul class="nav navbar-left" style="display:inline-grid;text-align:end">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form id="EditGeneralInfo" data-parsley-validate class="form-horizontal" style="direction:rtl;font-size:large" onsubmit="EditStudentGeneralInfoForm()" method="post">
+
+                        <div class="row">
+
+                            <div id="codiv" class="col-md-6 col-sm-6">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.FirstName <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="FirstName" value="@Model.FirstName" class="form-control " required>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.LastName <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="LastName" name="LastName" value="@Model.LastName" required="required" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.FatherName <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="FatherName" value="@Model.FatherName" required="required" class="form-control ">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.MotherName <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="MotherName" value="@Model.MotherName" required="required" class="form-control ">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.BirthDate <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input id="BirthDate" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)" value="@ViewBag.BirthDate">
+                                        <script>
+                                            function timeFunctionLong(input) {
+                                                setTimeout(function () {
+                                                    input.type = 'text';
+                                                }, 60000);
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.BirthPlace <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="BirthPlace" value="@Model.BirthPlace" required="required" class="form-control ">
+                                    </div>
+                                </div>
+                                <div class="item form-group" style="text-align: right;vertical-align:middle;display: flex;/* justify-content: center; */align-items: center;">
+
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">@Almwdeh.Resources.StudentResource.Sex</label>
+                                    <div class="col-md-8 col-sm-8 ">
+
+                                        @Almwdeh.Resources.StudentResource.male:
+                                        @if (Model.Sex == true)
+                                        {
+                                            <input type="radio" name="gender" id="genderM" value="True" checked="" required />
+                                        }
+
+                                        else
+                                        {
+                                            <input type="radio" name="gender" id="genderM" value="True" required />
+
+                                        }
+
+                                        @Almwdeh.Resources.StudentResource.female:
+
+                                        @if (Model.Sex == true)
+                                        {
+                                            <input type="radio" name="gender" id="genderF" value="False" />
+                                        }
+                                        else
+                                        {
+                                            <input type="radio" name="gender" id="genderF" value="False" checked="" />
+                                        }
+
+                                    </div>
+                                </div>
+                                <!-- #region SampleRegion -->
+                                <!-- #endregion -->
+
+                            </div>
+                            @*<div id="imgdiv" class="col-md-6 col-sm-6">
+                                    <div class="col-12 text-center">
+                                        <div class="kv-avatar">
+                                            <div class="file-loading">
+                                                <input id="imgupload" name="imgupload" type="file">
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="kv-avatar-hint">
+                                            <small>Select file < 1500 KB</small>
+                                        </div>
+                                    </div>
+                                </div>*@
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.MobileSyria <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="MobileSyria" value="@Model.MobileSyria" required="required" class="form-control phone-syria" @*data-inputmask="'mask':'(+\\963) 999-999-999'"*@ style="direction:ltr">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.MobileIran <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="MobileIran" value="@Model.MobileIran" required="required" class="form-control phone-iran" @*data-inputmask="'mask':'(+\\98) 999-999-9999'"*@ style="direction:ltr">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.WhatsappNumber <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="WhatsappNumber" value="@Model.WhatsappNumber" required="required" class="form-control phone" @*data-inputmask="'mask':'(+\\999) 999-999-9999','mask':'(+\\999) 999-9999'"*@ style="direction:ltr">
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.CitySyria <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        @Html.DropDownList("CitySyria", null, htmlAttributes: new { @class = "form-control chzn-select" })
+
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.AddressSyria <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <textarea rows="5" id="AddressSyria" required="required" class="form-control">@Model.AddressSyria</textarea>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.CityIran <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        @Html.DropDownList("CityIran", null, htmlAttributes: new { @class = "form-control" })
+
+
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.AddressIran <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <textarea rows="5" id="AddressIran" required="required" class="form-control">@Model.AddressIran</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group" style="text-align: right;vertical-align:middle;display: flex;/* justify-content: center; */align-items: center;">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">@Almwdeh.Resources.StudentResource.MaritalStatus</label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <div id="MaritalStatus">
+
+
+                                            @if (Model.MaritalStatus == true)
+                                            {
+                                                @Almwdeh.Resources.StudentResource.No @:
+                                                <input type="radio" id="MaritalStatusNo" name="MarriageStatus" value="false">
+                                                @Almwdeh.Resources.StudentResource.yes @:
+                                                <input type="radio" id="MaritalStatusYes" name="MarriageStatus" value="true" checked>
+                                            }
+                                            else
+                                            {
+                                                @Almwdeh.Resources.StudentResource.No @:
+                                                <input type="radio" id="MaritalStatusNo" name="MarriageStatus" value="false" checked>
+                                                @Almwdeh.Resources.StudentResource.yes @:
+                                                <input type="radio" id="MaritalStatusYes" name="MarriageStatus" value="true">
+
+                                            }
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="family" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                            @Almwdeh.Resources.StudentResource.WifeName <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input type="text" id="WifeName" value="@Model.WifeName" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                            @Almwdeh.Resources.StudentResource.ChildernNumber <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input type="number" id="ChildernNumber" value="@Model.ChildernNumber" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                            @Almwdeh.Resources.StudentResource.WifeDetails <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8 ">
+                                            <input type="text" id="WifeDetails" value="@Model.WifeDetails" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" value=@Almwdeh.Common.MySession.Current.UserID.ToString() id="UserAccessIDs" />
+
+                        <div class="ln_solid"></div>
+                        <div class="item form-group" style="direction:ltr;float:left">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+
+                                <input type="submit" class="btn btn-primary" value="@Almwdeh.Resources.Resource.save">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+</div>
+
+
+
+
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+
+@*<script>
+        var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
+            'onclick="alert(\'Call your custom code here.\')">' +
+            '<i class="glyphicon glyphicon-tag"></i>' +
+            '</button>';
+        $("#imgupload").fileinput({
+            overwriteInitial: true,
+            maxFileSize: 1500,
+            showClose: false,
+            showCaption: false,
+            showBrowse: false,
+            browseOnZoneClick: true,
+            removeLabel: '',
+            removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+            removeTitle: 'Cancel or reset changes',
+            elErrorContainer: '#kv-avatar-errors-2',
+            msgErrorClass: 'alert alert-block alert-danger',
+            defaultPreviewContent: '<img src="@url" alt="Your Avatar"><h6 class="text-muted">Click to select</h6>',
+            // layoutTemplates: { main2: '{preview} ' + btnCust + ' {remove} {browse}' },
+            allowedFileExtensions: ["jpg", "png", "gif"],
+        });
+
+
+    </script>*@
+
+
+<script>
+    function EditStudentGeneralInfoForm() {
+
+        alert($('#UserAccessIDs').val());
+        if ($('#FirstName').val() == '' || $('#LastName').val() == '' || $('#BirthDate').val() == '' ||
+            $('#BirthPlace').val() == '' || $('#FatherName').val() == '' || $('#MotherName').val() == '' ||
+            $('#MobileSyria').val() == '' || $('#MobileIran').val() == '' || $('#WhatsappNumber').val() == '' ||
+            $('#AddressIran').val() == '' || $('#AddressSyria').val() == '' || $('#WhatsappNumber').val() == ''
+            //$('#imgupload').val() == ''
+
+        ) {
+            alert("قم بملئ جميع الحقول");
+            return;
+        }
+
+        if ($("#EditGeneralInfo input[name='MarriageStatus']:checked").val() == 'true') {
+
+            if ($("#WifeDetails").val() == '' || $("#ChildernNumber").val() == '' || $("#WifeName").val() == '') {
+                alert("قم بملئ جميع الحقول");
+                return;
+            }
+        }
+
+        var formData = new FormData();
+        //var files = $("#imgupload").get(0).files;
+        //formData.append("file", files[0]);
+        formData.append("UserAccessIDs", $('#UserAccessIDs').val());
+        formData.append("FirstName", $('#FirstName').val());
+        formData.append("LastName", $('#LastName').val());
+        formData.append("Sex", $("#EditGeneralInfo input[name='gender']:checked").val());
+        formData.append("BirthDate", $('#BirthDate').val());
+        formData.append("BirthPlace", $('#BirthPlace').val());
+        formData.append("FatherName", $('#FatherName').val());
+
+        formData.append("MotherName", $('#MotherName').val());
+        formData.append("MobileSyria", $('#MobileSyria').val());
+        formData.append("MobileIran", $('#MobileIran').val());
+        formData.append("WhatsappNumber", $('#WhatsappNumber').val());
+        formData.append("CitySyria", $('#CitySyria').val());
+
+        formData.append("AddressSyria", $('#AddressSyria').val());
+        formData.append("CityIran", $('#CityIran').val());
+
+        formData.append("AddressIran", $('#AddressIran').val());
+        //****************
+
+        formData.append("MaritalStatus", $("#EditGeneralInfo input[name='MarriageStatus']:checked").val());
+        formData.append("WifeName", $('#WifeName').val());
+        formData.append("ChildernNumber", $('#ChildernNumber').val());
+        formData.append("WifeDetails", $('#WifeDetails').val());
+
+
+        //********************
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/Students/AddStudent",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                alert(result.message);
+            },
+            error: function (result) {
+                alert(result.message);
+            }
+        })
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        var $window = $(window);
+
+        function checkWidth() {
+            var windowsize = $window.width();
+            if (windowsize < 800) {
+                //if the window is greater than 440px wide then turn on jScrollPane..
+                $('#imgdiv').insertBefore('#codiv');
+            } else {
+                $('#codiv').insertBefore('#imgdiv');
+            }
+        }
+        // Execute on load
+        checkWidth();
+        // Bind event listener
+        $(window).resize(checkWidth);
+
+        //var MaritalStatusNo = $('#MaritalStatusNo').val();
+        //var MaritalStatusYes = $('#MaritalStatusYes').val();
+        ////alert(MaritalStatusNo);
+        ////alert(MaritalStatusYes);
+        //if (MaritalStatusNo == 'false' ) {
+        //    $('#family').css('display', 'none');
+        //    $("#WifeDetails").prop('required', false);
+        //    $("#ChildernNumber").prop('required', false);
+        //    $("#WifeName").prop('required', false);
+        //} else  {
+        //    $('#family').css('display', 'block');
+        //    $("#WifeDetails").prop('required', true);
+        //    $("#ChildernNumber").prop('required', true);
+        //    $("#WifeName").prop('required', true);
+        //}\
+
+        $(function () {
+
+            var inputValue = $("input[name='MarriageStatus']:checked").attr("value");
+
+            if (inputValue == 'false') {
+                $('#family').css('display', 'none');
+                $("#WifeDetails").prop('required', false);
+                $("#ChildernNumber").prop('required', false);
+                $("#WifeName").prop('required', false);
+            } else {
+                $('#family').css('display', 'block');
+                $("#WifeDetails").prop('required', true);
+                $("#ChildernNumber").prop('required', true);
+                $("#WifeName").prop('required', true);
+            }
+        });
+        //
+        $("input[name='MarriageStatus']").on('change', function () {
+
+            var inputValue = $(this).attr("value");
+
+            if (inputValue == 'false') {
+                $('#family').css('display', 'none');
+                $("#WifeDetails").prop('required', false);
+                $("#ChildernNumber").prop('required', false);
+                $("#WifeName").prop('required', false);
+            } else {
+                $('#family').css('display', 'block');
+                $("#WifeDetails").prop('required', true);
+                $("#ChildernNumber").prop('required', true);
+                $("#WifeName").prop('required', true);
+            }
+        });
+
+    });
+
+</script>
+
+<script>
+
+
+    $(document).ready(function () {
+        $('.phone-syria').inputmask('+\\963 \\999999999');
+        $('.phone-iran').inputmask('+\\98 \\9999999999');
+        $('.phone').inputmask({ mask: ["+\\9[63] 999999999", "+\\9[8] 9999999999"], greedy: false });
+    });
+
+    $(function () {
+        $(".chzn-select").chosen({ rtl: true });
+    });
+</script>

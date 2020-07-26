@@ -153,4 +153,25 @@
   <data name="Lostyourpassword" xml:space="preserve">
     <value>هل نسيت كلمة السر؟</value>
   </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>يرجى إدخال بريدك الإلكتروني للبحث عن حسابك.</value>
+  </data>
+  <data name="ForgotPasswordHeader" xml:space="preserve">
+    <value>البحث عن حسابك</value>
+  </data>
+  <data name="PlaceHolderReEnterPassword" xml:space="preserve">
+    <value>تاكيد كلمة السر</value>
+  </data>
+  <data name="ResetPassowrdHeader" xml:space="preserve">
+    <value>تغيير كلمة السر</value>
+  </data>
+  <data name="ResetPasswordButton" xml:space="preserve">
+    <value>إعادة الإرسال</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value> حفظ  المعلومات</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>تسجيل خروج</value>
+  </data>
 </root>

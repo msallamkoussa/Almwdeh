@@ -1,0 +1,101 @@
+﻿
+
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title" >
+            <h2>@Almwdeh.Resources.StudentResource.PassportInfo</h2>
+            <ul class="nav navbar-left" style="display:inline-grid;text-align:end">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                
+              
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br />
+            <form id="PassportInfo" data-parsley-validate class="form-horizontal" style="direction:rtl;font-size:large" onsubmit="AddStudentPassportInfoForm()" method="post">
+
+            
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.PassportNumber <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" id="PassportNumber" required="required" class="form-control" style="direction:ltr">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.PassportExpireDate <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input id="PassportExpireDate" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                <script>
+                                    function timeFunctionLong(input) {
+                                        setTimeout(function () {
+                                            input.type = 'text';
+                                        }, 60000);
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.ResidentExpireDate <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input id="ResidentExpireDate" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                <script>
+                                    function timeFunctionLong(input) {
+                                        setTimeout(function () {
+                                            input.type = 'text';
+                                        }, 60000);
+                                    }
+                                </script>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.PassportFile <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="file" id="PassportFile" required="required" class="form-control" style="direction:ltr">
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                @Almwdeh.Resources.StudentResource.ResidentFile <span class="required">*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="file" id="ResidentFile" required="required" class="form-control" style="direction:ltr">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+               
+                <input type="hidden" value=@Almwdeh.Common.MySession.Current.UserID.ToString() id="UserAccessIDs" />
+
+                <div class="ln_solid"></div>
+                <div class="item form-group" style="direction:ltr;float:left">
+                    <div class="col-md-6 col-sm-6 offset-md-3">
+
+                        <input type="submit" class="btn btn-primary" value="@Almwdeh.Resources.Resource.save">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

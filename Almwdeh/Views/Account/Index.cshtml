@@ -1,0 +1,118 @@
+﻿
+@{
+    Layout = null;
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+
+</head>
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+        <a class="hiddenanchor" id="ForgotPassword"></a>
+        <a class="hiddenanchor" id="ResetPassword"></a>
+        <div class="login_wrapper">
+            <br />
+            @{
+                Html.RenderAction("Login");
+            }
+            @{
+                Html.RenderAction("Signup");
+            }
+            @{
+                Html.RenderAction("ForgotPassword");
+            }
+
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/lib")
+
+</body>
+
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+
+<script>
+    function Validate() {
+        try {
+            var returnUrl = location.search.split('ReturnUrl=')[1];
+            var controllerName = returnUrl.split('%2f')[1];
+            var actionName = returnUrl.split('%2f')[2];
+        }
+        catch(err){
+            var returnUrl = "";
+            var controllerName = "";
+            var actionName = "";
+        }
+        
+
+        
+ 
+	$.ajax(
+	{
+  	type: "POST",
+  	url: '@Url.Action("Validate", "Account")',
+  	data: {
+            Username: $('#Username').val(),
+            Password: $('#Password').val(),
+            Email: $('#Username').val(),
+            ReturnUrl: returnUrl,
+            ControllerName: controllerName,
+            ActionName: actionName
+
+  	},
+            error: function (result) {
+                alert(result.message+"1");
+  	},
+  	success: function (result) {
+    	console.log(result);
+      	if (result.status == true) {   
+                if (result.isRedirect) {
+                    
+                    window.location.href = result.redirectUrl;
+                }
+                else
+                    window.location.href = '@Url.Action("Index", "Students")';
+    	}
+    	else {
+      	alert(result.message);
+    	}
+  	}
+	});
+  }
+</script>
+
+<script>
+    function createAccount() {
+
+	$.ajax(
+	{
+  	type: "POST",
+  	url: '@Url.Action("CreateAccount", "Account")',
+  	data: {
+            Username: $('#NewUsername').val(),
+            Password: $('#NewPassword').val(),
+            Email: $('#NewEmail').val()
+  	},
+  	error: function (result) {
+    	alert(result.message);
+  	},
+  	success: function (result) {
+    	console.log(result);
+      	if (result.status == true) {
+
+      	window.location.href = '@Url.Action("Index", "Account")';
+    	}
+    	else {
+      	alert(result.message);
+    	}
+  	}
+	});
+  }
+</script>

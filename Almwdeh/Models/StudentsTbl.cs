@@ -14,6 +14,12 @@ namespace Almwdeh.Models
     
     public partial class StudentsTbl
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public StudentsTbl()
+        {
+            this.StudentsUniversitiesTbls = new HashSet<StudentsUniversitiesTbl>();
+        }
+    
         public int UserAccessIDs { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -60,5 +66,8 @@ namespace Almwdeh.Models
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> LastEditDate { get; set; }
         public Nullable<bool> EditVerified { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentsUniversitiesTbl> StudentsUniversitiesTbls { get; set; }
     }
 }

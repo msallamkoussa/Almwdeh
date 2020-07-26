@@ -4,13 +4,34 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="97cef430eca547b2b5008b54a1a194fb" Name="Diagram1">
-        <EntityTypeShape EntityType="AlmawadehDbModel.StudentsTbl" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AlmawadehDbModel.StudentsUniversitiesSemestersTbl" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AlmawadehDbModel.StudentsUniversitiesTbl" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AlmawadehDbModel.UsersAccessTbl" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="AlmawadehDbModel.UsersRolesTbl" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+      <Diagram DiagramId="e618acd82d084561827e6c4401153579" Name="Diagram1">
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboAcademicDegree" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboCityIranTbl" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboCitySyriaTbl" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboDoctrineTbl" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboFieldOfStudy" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboFinancialStatu" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboGraduationStatue" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboScholarshipGroup" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboTheIdentifier" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboUniversityName" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.GeneralInformationTbl" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.MessageAttachmentsTbl" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.MessagesTbl" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.StudentsTbl" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.StudentsUniversitiesSemestersTbl" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.StudentsUniversitiesTbl" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.UsersAccessTbl" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.UsersRolesTbl" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="AlmawadehDbModel.FK_MessageAttachmentsTbl_MessagesTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AlmawadehDbModel.FK_MessagesTbl_MessagesTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AlmawadehDbModel.FK_MessagesTbl_UsersAccessTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AlmawadehDbModel.FK_MessagesTbl_UsersAccessTbl1" ManuallyRouted="false" />
+        <AssociationConnector Association="AlmawadehDbModel.FK_StudentsUniversitiesTbl_StudentsTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AlmawadehDbModel.FK_StudentsUniversitiesSemestersTbl_StudentsUniversitiesTbl" ManuallyRouted="false" />
         <AssociationConnector Association="AlmawadehDbModel.FK_UsersAccessTbl_UsersRolesTbl" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboShahidRelationship" Width="1.5" PointX="10.375" PointY="12.75" />
+        <EntityTypeShape EntityType="AlmawadehDbModel.ComboSkille" Width="1.5" PointX="12.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

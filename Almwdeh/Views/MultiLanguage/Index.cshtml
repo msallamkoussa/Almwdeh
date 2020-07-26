@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+
+<h2>Index</h2>
+
+<ul>
+    <li>@Html.ActionLink("Arabic", "Change", "MultiLanguage", new { LanguageAbbrevation = "ar" }, null)</li>
+    <li>@Html.ActionLink("persian", "Change", "MultiLanguage", new { LanguageAbbrevation = "fa" }, null)</li>
+    <li>@DateTime.Now.ToString()</li>
+</ul>

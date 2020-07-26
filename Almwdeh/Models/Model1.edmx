@@ -4,7 +4,127 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AlmawadehDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AlmawadehDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ComboAcademicDegree">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComboCityIranTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComboCitySyriaTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComboDoctrineTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComboFieldOfStudy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComboFinancialStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComboGraduationStatues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComboScholarshipGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComboShahidRelationship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComboSkilles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComboTheIdentifier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComboUniversityName">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GeneralInformationTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="GmailName" Type="nvarchar" MaxLength="50" />
+          <Property Name="GmailEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="GmailPassword" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MessageAttachmentsTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilePath" Type="nvarchar(max)" />
+          <Property Name="MessageIDs" Type="int" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="10" />
+          <Property Name="FileSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MessagesTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="MessageBody" Type="nvarchar(max)" />
+          <Property Name="SenderUserAccessIDs" Type="int" />
+          <Property Name="ReceiverUserAccessIDs" Type="int" />
+          <Property Name="SendDate" Type="datetime" />
+          <Property Name="ReadDate" Type="datetime" />
+          <Property Name="MessageStatues" Type="int" />
+          <Property Name="ReplyToMessageIDs" Type="int" />
+          <Property Name="HasAttachments" Type="bit" />
+          <Property Name="HasBeenRead" Type="bit" />
+        </EntityType>
         <EntityType Name="StudentsTbl">
           <Key>
             <PropertyRef Name="UserAccessIDs" />
@@ -103,6 +223,7 @@
           <Property Name="AccessFailedCount" Type="int" />
           <Property Name="LockoutEnabled" Type="bit" />
           <Property Name="Verified" Type="bit" />
+          <Property Name="ResetPasswordCode" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="UsersRolesTbl">
           <Key>
@@ -112,6 +233,78 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_MessageAttachmentsTbl_MessagesTbl">
+          <End Role="MessagesTbl" Type="Self.MessagesTbl" Multiplicity="0..1" />
+          <End Role="MessageAttachmentsTbl" Type="Self.MessageAttachmentsTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessagesTbl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessageAttachmentsTbl">
+              <PropertyRef Name="MessageIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessagesTbl_MessagesTbl">
+          <End Role="MessagesTbl" Type="Self.MessagesTbl" Multiplicity="0..1" />
+          <End Role="MessagesTbl1" Type="Self.MessagesTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessagesTbl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessagesTbl1">
+              <PropertyRef Name="ReplyToMessageIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessagesTbl_UsersAccessTbl">
+          <End Role="UsersAccessTbl" Type="Self.UsersAccessTbl" Multiplicity="0..1" />
+          <End Role="MessagesTbl" Type="Self.MessagesTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersAccessTbl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessagesTbl">
+              <PropertyRef Name="SenderUserAccessIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessagesTbl_UsersAccessTbl1">
+          <End Role="UsersAccessTbl" Type="Self.UsersAccessTbl" Multiplicity="0..1" />
+          <End Role="MessagesTbl" Type="Self.MessagesTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersAccessTbl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessagesTbl">
+              <PropertyRef Name="ReceiverUserAccessIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentsUniversitiesSemestersTbl_StudentsUniversitiesTbl">
+          <End Role="StudentsUniversitiesTbl" Type="Self.StudentsUniversitiesTbl" Multiplicity="0..1" />
+          <End Role="StudentsUniversitiesSemestersTbl" Type="Self.StudentsUniversitiesSemestersTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentsUniversitiesTbl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentsUniversitiesSemestersTbl">
+              <PropertyRef Name="StudentUniversityIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentsUniversitiesTbl_StudentsTbl">
+          <End Role="StudentsTbl" Type="Self.StudentsTbl" Multiplicity="0..1" />
+          <End Role="StudentsUniversitiesTbl" Type="Self.StudentsUniversitiesTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentsTbl">
+              <PropertyRef Name="UserAccessIDs" />
+            </Principal>
+            <Dependent Role="StudentsUniversitiesTbl">
+              <PropertyRef Name="UserAccessIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UsersAccessTbl_UsersRolesTbl">
           <End Role="UsersRolesTbl" Type="Self.UsersRolesTbl" Multiplicity="0..1" />
           <End Role="UsersAccessTbl" Type="Self.UsersAccessTbl" Multiplicity="*" />
@@ -125,21 +318,171 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="AlmawadehDbModelStoreContainer">
+          <EntitySet Name="ComboAcademicDegree" EntityType="Self.ComboAcademicDegree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboCityIranTbl" EntityType="Self.ComboCityIranTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboCitySyriaTbl" EntityType="Self.ComboCitySyriaTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboDoctrineTbl" EntityType="Self.ComboDoctrineTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboFieldOfStudy" EntityType="Self.ComboFieldOfStudy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboFinancialStatus" EntityType="Self.ComboFinancialStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboGraduationStatues" EntityType="Self.ComboGraduationStatues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboScholarshipGroup" EntityType="Self.ComboScholarshipGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboShahidRelationship" EntityType="Self.ComboShahidRelationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboSkilles" EntityType="Self.ComboSkilles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboTheIdentifier" EntityType="Self.ComboTheIdentifier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboUniversityName" EntityType="Self.ComboUniversityName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneralInformationTbl" EntityType="Self.GeneralInformationTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessageAttachmentsTbl" EntityType="Self.MessageAttachmentsTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessagesTbl" EntityType="Self.MessagesTbl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentsTbl" EntityType="Self.StudentsTbl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentsUniversitiesSemestersTbl" EntityType="Self.StudentsUniversitiesSemestersTbl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentsUniversitiesTbl" EntityType="Self.StudentsUniversitiesTbl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersAccessTbl" EntityType="Self.UsersAccessTbl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersRolesTbl" EntityType="Self.UsersRolesTbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MessageAttachmentsTbl_MessagesTbl" Association="Self.FK_MessageAttachmentsTbl_MessagesTbl">
+            <End Role="MessagesTbl" EntitySet="MessagesTbl" />
+            <End Role="MessageAttachmentsTbl" EntitySet="MessageAttachmentsTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessagesTbl_MessagesTbl" Association="Self.FK_MessagesTbl_MessagesTbl">
+            <End Role="MessagesTbl" EntitySet="MessagesTbl" />
+            <End Role="MessagesTbl1" EntitySet="MessagesTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessagesTbl_UsersAccessTbl" Association="Self.FK_MessagesTbl_UsersAccessTbl">
+            <End Role="UsersAccessTbl" EntitySet="UsersAccessTbl" />
+            <End Role="MessagesTbl" EntitySet="MessagesTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessagesTbl_UsersAccessTbl1" Association="Self.FK_MessagesTbl_UsersAccessTbl1">
+            <End Role="UsersAccessTbl" EntitySet="UsersAccessTbl" />
+            <End Role="MessagesTbl" EntitySet="MessagesTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsUniversitiesSemestersTbl_StudentsUniversitiesTbl" Association="Self.FK_StudentsUniversitiesSemestersTbl_StudentsUniversitiesTbl">
+            <End Role="StudentsUniversitiesTbl" EntitySet="StudentsUniversitiesTbl" />
+            <End Role="StudentsUniversitiesSemestersTbl" EntitySet="StudentsUniversitiesSemestersTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsUniversitiesTbl_StudentsTbl" Association="Self.FK_StudentsUniversitiesTbl_StudentsTbl">
+            <End Role="StudentsTbl" EntitySet="StudentsTbl" />
+            <End Role="StudentsUniversitiesTbl" EntitySet="StudentsUniversitiesTbl" />
+          </AssociationSet>
           <AssociationSet Name="FK_UsersAccessTbl_UsersRolesTbl" Association="Self.FK_UsersAccessTbl_UsersRolesTbl">
             <End Role="UsersRolesTbl" EntitySet="UsersRolesTbl" />
             <End Role="UsersAccessTbl" EntitySet="UsersAccessTbl" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AlmawadehDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ComboAcademicDegree">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComboCityIranTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComboCitySyriaTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComboDoctrineTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComboFieldOfStudy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComboFinancialStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComboGraduationStatue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComboScholarshipGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComboTheIdentifier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComboUniversityName">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GeneralInformationTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="GmailName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GmailEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GmailPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MessageAttachmentsTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MessageIDs" Type="Int32" />
+          <Property Name="FileType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FileSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MessagesTbl" Relationship="Self.FK_MessageAttachmentsTbl_MessagesTbl" FromRole="MessageAttachmentsTbl" ToRole="MessagesTbl" />
+        </EntityType>
+        <EntityType Name="MessagesTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MessageBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SenderUserAccessIDs" Type="Int32" />
+          <Property Name="ReceiverUserAccessIDs" Type="Int32" />
+          <Property Name="SendDate" Type="DateTime" Precision="3" />
+          <Property Name="ReadDate" Type="DateTime" Precision="3" />
+          <Property Name="MessageStatues" Type="Int32" />
+          <Property Name="ReplyToMessageIDs" Type="Int32" />
+          <Property Name="HasAttachments" Type="Boolean" />
+          <Property Name="HasBeenRead" Type="Boolean" />
+          <NavigationProperty Name="MessageAttachmentsTbls" Relationship="Self.FK_MessageAttachmentsTbl_MessagesTbl" FromRole="MessagesTbl" ToRole="MessageAttachmentsTbl" />
+          <NavigationProperty Name="MessagesTbl1" Relationship="Self.FK_MessagesTbl_MessagesTbl" FromRole="MessagesTbl" ToRole="MessagesTbl1" />
+          <NavigationProperty Name="MessagesTbl2" Relationship="Self.FK_MessagesTbl_MessagesTbl" FromRole="MessagesTbl1" ToRole="MessagesTbl" />
+          <NavigationProperty Name="UsersAccessTbl" Relationship="Self.FK_MessagesTbl_UsersAccessTbl" FromRole="MessagesTbl" ToRole="UsersAccessTbl" />
+          <NavigationProperty Name="UsersAccessTbl1" Relationship="Self.FK_MessagesTbl_UsersAccessTbl1" FromRole="MessagesTbl" ToRole="UsersAccessTbl" />
+        </EntityType>
         <EntityType Name="StudentsTbl">
           <Key>
             <PropertyRef Name="UserAccessIDs" />
@@ -190,6 +533,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="LastEditDate" Type="DateTime" Precision="3" />
           <Property Name="EditVerified" Type="Boolean" />
+          <NavigationProperty Name="StudentsUniversitiesTbls" Relationship="Self.FK_StudentsUniversitiesTbl_StudentsTbl" FromRole="StudentsTbl" ToRole="StudentsUniversitiesTbl" />
         </EntityType>
         <EntityType Name="StudentsUniversitiesSemestersTbl">
           <Key>
@@ -204,6 +548,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="0" />
           <Property Name="LastEditDate" Type="DateTime" Precision="0" />
           <Property Name="EditVerified" Type="Boolean" />
+          <NavigationProperty Name="StudentsUniversitiesTbl" Relationship="Self.FK_StudentsUniversitiesSemestersTbl_StudentsUniversitiesTbl" FromRole="StudentsUniversitiesSemestersTbl" ToRole="StudentsUniversitiesTbl" />
         </EntityType>
         <EntityType Name="StudentsUniversitiesTbl">
           <Key>
@@ -224,6 +569,8 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="0" />
           <Property Name="LastEditDate" Type="DateTime" Precision="0" />
           <Property Name="EditVerified" Type="Boolean" />
+          <NavigationProperty Name="StudentsTbl" Relationship="Self.FK_StudentsUniversitiesTbl_StudentsTbl" FromRole="StudentsUniversitiesTbl" ToRole="StudentsTbl" />
+          <NavigationProperty Name="StudentsUniversitiesSemestersTbls" Relationship="Self.FK_StudentsUniversitiesSemestersTbl_StudentsUniversitiesTbl" FromRole="StudentsUniversitiesTbl" ToRole="StudentsUniversitiesSemestersTbl" />
         </EntityType>
         <EntityType Name="UsersAccessTbl">
           <Key>
@@ -238,6 +585,9 @@
           <Property Name="AccessFailedCount" Type="Int32" />
           <Property Name="LockoutEnabled" Type="Boolean" />
           <Property Name="Verified" Type="Boolean" />
+          <Property Name="ResetPasswordCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MessagesTbls" Relationship="Self.FK_MessagesTbl_UsersAccessTbl" FromRole="UsersAccessTbl" ToRole="MessagesTbl" />
+          <NavigationProperty Name="MessagesTbls1" Relationship="Self.FK_MessagesTbl_UsersAccessTbl1" FromRole="UsersAccessTbl" ToRole="MessagesTbl" />
           <NavigationProperty Name="UsersRolesTbl" Relationship="Self.FK_UsersAccessTbl_UsersRolesTbl" FromRole="UsersAccessTbl" ToRole="UsersRolesTbl" />
         </EntityType>
         <EntityType Name="UsersRolesTbl">
@@ -249,6 +599,78 @@
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="UsersAccessTbls" Relationship="Self.FK_UsersAccessTbl_UsersRolesTbl" FromRole="UsersRolesTbl" ToRole="UsersAccessTbl" />
         </EntityType>
+        <Association Name="FK_MessageAttachmentsTbl_MessagesTbl">
+          <End Role="MessagesTbl" Type="Self.MessagesTbl" Multiplicity="0..1" />
+          <End Role="MessageAttachmentsTbl" Type="Self.MessageAttachmentsTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessagesTbl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessageAttachmentsTbl">
+              <PropertyRef Name="MessageIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessagesTbl_MessagesTbl">
+          <End Role="MessagesTbl" Type="Self.MessagesTbl" Multiplicity="0..1" />
+          <End Role="MessagesTbl1" Type="Self.MessagesTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessagesTbl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessagesTbl1">
+              <PropertyRef Name="ReplyToMessageIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessagesTbl_UsersAccessTbl">
+          <End Role="UsersAccessTbl" Type="Self.UsersAccessTbl" Multiplicity="0..1" />
+          <End Role="MessagesTbl" Type="Self.MessagesTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersAccessTbl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessagesTbl">
+              <PropertyRef Name="SenderUserAccessIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessagesTbl_UsersAccessTbl1">
+          <End Role="UsersAccessTbl" Type="Self.UsersAccessTbl" Multiplicity="0..1" />
+          <End Role="MessagesTbl" Type="Self.MessagesTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersAccessTbl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessagesTbl">
+              <PropertyRef Name="ReceiverUserAccessIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentsUniversitiesTbl_StudentsTbl">
+          <End Role="StudentsTbl" Type="Self.StudentsTbl" Multiplicity="0..1" />
+          <End Role="StudentsUniversitiesTbl" Type="Self.StudentsUniversitiesTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentsTbl">
+              <PropertyRef Name="UserAccessIDs" />
+            </Principal>
+            <Dependent Role="StudentsUniversitiesTbl">
+              <PropertyRef Name="UserAccessIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentsUniversitiesSemestersTbl_StudentsUniversitiesTbl">
+          <End Role="StudentsUniversitiesTbl" Type="Self.StudentsUniversitiesTbl" Multiplicity="0..1" />
+          <End Role="StudentsUniversitiesSemestersTbl" Type="Self.StudentsUniversitiesSemestersTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentsUniversitiesTbl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentsUniversitiesSemestersTbl">
+              <PropertyRef Name="StudentUniversityIDs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UsersAccessTbl_UsersRolesTbl">
           <End Role="UsersRolesTbl" Type="Self.UsersRolesTbl" Multiplicity="0..1" />
           <End Role="UsersAccessTbl" Type="Self.UsersAccessTbl" Multiplicity="*" />
@@ -262,22 +684,194 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="AlmawadehDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ComboAcademicDegrees" EntityType="Self.ComboAcademicDegree" />
+          <EntitySet Name="ComboCityIranTbls" EntityType="Self.ComboCityIranTbl" />
+          <EntitySet Name="ComboCitySyriaTbls" EntityType="Self.ComboCitySyriaTbl" />
+          <EntitySet Name="ComboDoctrineTbls" EntityType="Self.ComboDoctrineTbl" />
+          <EntitySet Name="ComboFieldOfStudies" EntityType="Self.ComboFieldOfStudy" />
+          <EntitySet Name="ComboFinancialStatus" EntityType="Self.ComboFinancialStatu" />
+          <EntitySet Name="ComboGraduationStatues" EntityType="Self.ComboGraduationStatue" />
+          <EntitySet Name="ComboScholarshipGroups" EntityType="Self.ComboScholarshipGroup" />
+          <EntitySet Name="ComboTheIdentifiers" EntityType="Self.ComboTheIdentifier" />
+          <EntitySet Name="ComboUniversityNames" EntityType="Self.ComboUniversityName" />
+          <EntitySet Name="GeneralInformationTbls" EntityType="Self.GeneralInformationTbl" />
+          <EntitySet Name="MessageAttachmentsTbls" EntityType="Self.MessageAttachmentsTbl" />
+          <EntitySet Name="MessagesTbls" EntityType="Self.MessagesTbl" />
           <EntitySet Name="StudentsTbls" EntityType="Self.StudentsTbl" />
           <EntitySet Name="StudentsUniversitiesSemestersTbls" EntityType="Self.StudentsUniversitiesSemestersTbl" />
           <EntitySet Name="StudentsUniversitiesTbls" EntityType="Self.StudentsUniversitiesTbl" />
           <EntitySet Name="UsersAccessTbls" EntityType="Self.UsersAccessTbl" />
           <EntitySet Name="UsersRolesTbls" EntityType="Self.UsersRolesTbl" />
+          <AssociationSet Name="FK_MessageAttachmentsTbl_MessagesTbl" Association="Self.FK_MessageAttachmentsTbl_MessagesTbl">
+            <End Role="MessagesTbl" EntitySet="MessagesTbls" />
+            <End Role="MessageAttachmentsTbl" EntitySet="MessageAttachmentsTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessagesTbl_MessagesTbl" Association="Self.FK_MessagesTbl_MessagesTbl">
+            <End Role="MessagesTbl" EntitySet="MessagesTbls" />
+            <End Role="MessagesTbl1" EntitySet="MessagesTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessagesTbl_UsersAccessTbl" Association="Self.FK_MessagesTbl_UsersAccessTbl">
+            <End Role="UsersAccessTbl" EntitySet="UsersAccessTbls" />
+            <End Role="MessagesTbl" EntitySet="MessagesTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessagesTbl_UsersAccessTbl1" Association="Self.FK_MessagesTbl_UsersAccessTbl1">
+            <End Role="UsersAccessTbl" EntitySet="UsersAccessTbls" />
+            <End Role="MessagesTbl" EntitySet="MessagesTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsUniversitiesTbl_StudentsTbl" Association="Self.FK_StudentsUniversitiesTbl_StudentsTbl">
+            <End Role="StudentsTbl" EntitySet="StudentsTbls" />
+            <End Role="StudentsUniversitiesTbl" EntitySet="StudentsUniversitiesTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsUniversitiesSemestersTbl_StudentsUniversitiesTbl" Association="Self.FK_StudentsUniversitiesSemestersTbl_StudentsUniversitiesTbl">
+            <End Role="StudentsUniversitiesTbl" EntitySet="StudentsUniversitiesTbls" />
+            <End Role="StudentsUniversitiesSemestersTbl" EntitySet="StudentsUniversitiesSemestersTbls" />
+          </AssociationSet>
           <AssociationSet Name="FK_UsersAccessTbl_UsersRolesTbl" Association="Self.FK_UsersAccessTbl_UsersRolesTbl">
             <End Role="UsersRolesTbl" EntitySet="UsersRolesTbls" />
             <End Role="UsersAccessTbl" EntitySet="UsersAccessTbls" />
           </AssociationSet>
+          <EntitySet Name="ComboShahidRelationships" EntityType="AlmawadehDbModel.ComboShahidRelationship" />
+          <EntitySet Name="ComboSkilles" EntityType="AlmawadehDbModel.ComboSkille" />
         </EntityContainer>
+        <EntityType Name="ComboShahidRelationship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComboSkille">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AlmawadehDbModelStoreContainer" CdmEntityContainer="AlmawadehDbEntities">
+          <EntitySetMapping Name="ComboAcademicDegrees">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboAcademicDegree">
+              <MappingFragment StoreEntitySet="ComboAcademicDegree">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboCityIranTbls">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboCityIranTbl">
+              <MappingFragment StoreEntitySet="ComboCityIranTbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboCitySyriaTbls">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboCitySyriaTbl">
+              <MappingFragment StoreEntitySet="ComboCitySyriaTbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboDoctrineTbls">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboDoctrineTbl">
+              <MappingFragment StoreEntitySet="ComboDoctrineTbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboFieldOfStudies">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboFieldOfStudy">
+              <MappingFragment StoreEntitySet="ComboFieldOfStudy">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboFinancialStatus">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboFinancialStatu">
+              <MappingFragment StoreEntitySet="ComboFinancialStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboGraduationStatues">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboGraduationStatue">
+              <MappingFragment StoreEntitySet="ComboGraduationStatues">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboScholarshipGroups">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboScholarshipGroup">
+              <MappingFragment StoreEntitySet="ComboScholarshipGroup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboTheIdentifiers">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboTheIdentifier">
+              <MappingFragment StoreEntitySet="ComboTheIdentifier">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboUniversityNames">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboUniversityName">
+              <MappingFragment StoreEntitySet="ComboUniversityName">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralInformationTbls">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.GeneralInformationTbl">
+              <MappingFragment StoreEntitySet="GeneralInformationTbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GmailName" ColumnName="GmailName" />
+                <ScalarProperty Name="GmailEmail" ColumnName="GmailEmail" />
+                <ScalarProperty Name="GmailPassword" ColumnName="GmailPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageAttachmentsTbls">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.MessageAttachmentsTbl">
+              <MappingFragment StoreEntitySet="MessageAttachmentsTbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="MessageIDs" ColumnName="MessageIDs" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessagesTbls">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.MessagesTbl">
+              <MappingFragment StoreEntitySet="MessagesTbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+                <ScalarProperty Name="SenderUserAccessIDs" ColumnName="SenderUserAccessIDs" />
+                <ScalarProperty Name="ReceiverUserAccessIDs" ColumnName="ReceiverUserAccessIDs" />
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="ReadDate" ColumnName="ReadDate" />
+                <ScalarProperty Name="MessageStatues" ColumnName="MessageStatues" />
+                <ScalarProperty Name="ReplyToMessageIDs" ColumnName="ReplyToMessageIDs" />
+                <ScalarProperty Name="HasAttachments" ColumnName="HasAttachments" />
+                <ScalarProperty Name="HasBeenRead" ColumnName="HasBeenRead" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="StudentsTbls">
             <EntityTypeMapping TypeName="AlmawadehDbModel.StudentsTbl">
               <MappingFragment StoreEntitySet="StudentsTbl">
@@ -378,6 +972,7 @@
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
                 <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -387,6 +982,22 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboShahidRelationships">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboShahidRelationship">
+              <MappingFragment StoreEntitySet="ComboShahidRelationship">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboSkilles">
+            <EntityTypeMapping TypeName="AlmawadehDbModel.ComboSkille">
+              <MappingFragment StoreEntitySet="ComboSkilles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

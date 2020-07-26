@@ -1,0 +1,337 @@
+﻿@*<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>*@
+
+
+
+
+<div class="right_col" role="main">
+    <div class="row">
+        @*@{
+            Html.RenderAction("EditStudentGeneralInfo");
+        }*@
+    </div>
+
+</div>
+
+
+
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+
+
+<script>
+
+    //********************************************
+
+    function EditStudentGeneralInfoForm() {
+
+        alert($('#UserAccessIDs').val());
+        if ($('#FirstName').val() == '' || $('#LastName').val() == '' || $('#BirthDate').val() == '' ||
+            $('#BirthPlace').val() == '' || $('#FatherName').val() == '' || $('#MotherName').val() == '' ||
+            $('#MobileSyria').val() == '' || $('#MobileIran').val() == '' || $('#WhatsappNumber').val() == '' ||
+            $('#AddressIran').val() == '' || $('#AddressSyria').val() == '' || $('#WhatsappNumber').val() == ''
+            //$('#imgupload').val() == ''
+
+        ) {
+            alert("قم بملئ جميع الحقول");
+            return;
+        }
+
+        if ($("#EditGeneralInfo input[name='MarriageStatus']:checked").val() == 'true') {
+
+            if ($("#WifeDetails").val() == '' || $("#ChildernNumber").val() == '' || $("#WifeName").val() == '') {
+                alert("قم بملئ جميع الحقول");
+                return;
+            }
+        }
+
+        var formData = new FormData();
+        //var files = $("#imgupload").get(0).files;
+        //formData.append("file", files[0]);
+        formData.append("UserAccessIDs", $('#UserAccessIDs').val());
+        formData.append("FirstName", $('#FirstName').val());
+        formData.append("LastName", $('#LastName').val());
+        formData.append("Sex", $("#EditGeneralInfo input[name='gender']:checked").val());
+        formData.append("BirthDate", $('#BirthDate').val());
+        formData.append("BirthPlace", $('#BirthPlace').val());
+        formData.append("FatherName", $('#FatherName').val());
+
+        formData.append("MotherName", $('#MotherName').val());
+        formData.append("MobileSyria", $('#MobileSyria').val());
+        formData.append("MobileIran", $('#MobileIran').val());
+        formData.append("WhatsappNumber", $('#WhatsappNumber').val());
+        formData.append("CitySyria", $('#CitySyria').val());
+
+        formData.append("AddressSyria", $('#AddressSyria').val());
+        formData.append("CityIran", $('#CityIran').val());
+
+        formData.append("AddressIran", $('#AddressIran').val());
+        //****************
+
+        formData.append("MaritalStatus", $("#EditGeneralInfo input[name='MarriageStatus']:checked").val());
+        formData.append("WifeName", $('#WifeName').val());
+        formData.append("ChildernNumber", $('#ChildernNumber').val());
+        formData.append("WifeDetails", $('#WifeDetails').val());
+
+
+        //********************
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/Students/AddStudent",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                alert(result.message);
+            },
+            error: function (result) {
+                alert(result.message);
+            }
+        })
+    }
+    //********************************************
+    function AddStudentPassportInfoForm() {
+        alert($('#UserAccessIDs').val());
+        if ($('#PassportNumber').val() == '' || $('#PassportExpireDate').val() == '' || $('#ResidentExpireDate').val() == ''
+            || $("#PassportFile").get(0).files.length == 0 || $("#ResidentFile").get(0).files.length == 0) {
+            alert("قم بملئ جميع الحقول");
+            return;
+        }
+        //if ($("#PassportFile").get(0).files.length > 1024 ) {
+        //    alert("حجم فایل جواز السفر لایمکن این یکون اکتر من 1 میغا");
+        //    return;
+        //}
+        //if ($("#ResidentFile").get(0).files.length > 1024) {
+        //    alert("حجم فایل الاقامه لایمکن این یکون اکتر من 1 میغا");
+        //    return;
+        //}
+
+        var formData = new FormData();
+
+        formData.append("UserAccessIDs", $('#UserAccessIDs').val());
+
+        formData.append("PassportNumber", $('#PassportNumber').val());
+
+        formData.append("PassportExpireDate", $('#PassportExpireDate').val());
+
+        formData.append("ResidentExpireDate", $('#ResidentExpireDate').val());
+
+        var files = $("#PassportFile").get(0).files;
+        formData.append("PassportFile", files[0]);
+
+        var files = $("#ResidentFile").get(0).files;
+        formData.append("ResidentFile", files[0]);
+
+        $.ajax({
+            type: 'POST',
+            url: "/Students/AddStudent",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                alert(result.message);
+            },
+            error: function (result) {
+                alert(result.message);
+            }
+        })
+
+    }
+    //********************************************
+    function AddStudentFinanceInfoForm() {
+        alert($('#UserAccessIDs').val());
+        if ($('#FinancialStatus').val() == '') {
+            alert("قم بملئ جميع الحقول");
+            return;
+        }
+
+        if ($("#FinanceInfo input[name='NeedMonthlyAid']:checked").val() == "true") {
+            if ($('#WorkDetails').val() == '') {
+                alert("قم بملئ جميع الحقول");
+                return;
+            }
+        }
+
+        if ($("#FinanceInfo input[name='Working']:checked").val() == "true") {
+            if ($('#BankAccountNumber').val() == '' || $('#BankCardNumber').val() == '') {
+                alert("قم بملئ جميع الحقول");
+                return;
+            }
+        }
+
+        var formData = new FormData();
+
+        formData.append("UserAccessIDs", $('#UserAccessIDs').val());
+        formData.append("NeedMonthlyAid", $("#FinanceInfo input[name='NeedMonthlyAid']:checked").val());
+        formData.append("FinancialStatus", $('#FinancialStatus').val());
+        formData.append("BankAccountNumber", $('#BankAccountNumber').val());
+        formData.append("BankCardNumber", $('#BankCardNumber').val());
+        formData.append("BankShibaNumber", $('#BankShibaNumber').val());
+
+        formData.append("Working", $("#FinanceInfo input[name='Working']:checked").val());
+        formData.append("WorkDetails", $('#WorkDetails').val());
+
+        $.ajax({
+            type: 'POST',
+            url: "/Students/AddStudent",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                alert(result.message);
+            },
+            error: function (result) {
+                alert(result.message);
+            }
+        })
+    }
+    //********************************************
+    function AddStudentUniversityInfoForm() {
+        alert($('#UserAccessIDs').val());
+
+        var formData = new FormData();
+        //var files = $("#CertificateFile").get(0).files;
+        //formData.append("CertificateFile", files[0]);
+
+        formData.append("UserAccessIDs", $('#UserAccessIDs').val());
+        //formData.append("AcademicDegree", $("AcademicDegree").val());
+        //formData.append("UniversityName", $('#UniversityName').val());
+        //formData.append("FieldOfStudy", $('#FieldOfStudy').val());
+        //formData.append("StudentUniversityNumber", $('#StudentUniversityNumber').val());
+        //formData.append("StartAcademicYearDate", $('#StartAcademicYearDate').val());
+        //formData.append("GraduationStatues", $('#GraduationStatues').val());
+        //formData.append("GraduationYear", $('#GraduationYear').val());
+        //formData.append("AverageScore", $('#AverageScore').val());
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/Students/AddStudentUniversity",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                alert(result.message);
+            },
+            error: function (result) {
+                alert(result.message);
+            }
+        })
+    }
+    //********************************************
+
+    function AddStudentExtraInfoForm() {
+        alert($('#UserAccessIDs').val());
+        if ($('#PreviousJobs').val() == '') {
+            alert("قم بملئ جميع الحقول");
+            return;
+        }
+
+        if ($("#ExtraInfo input[name='ShahidFamily']:checked").val() == "true") {
+            if ($('#ShahidRelationship').val() == '') {
+                alert("قم بملئ جميع الحقول");
+                return;
+            }
+        }
+
+
+
+        var formData = new FormData();
+
+        formData.append("UserAccessIDs", $('#UserAccessIDs').val());
+        formData.append("Skills", $('#Skills').val());
+        formData.append("ShahidFamily", $("#ExtraInfo input[name='ShahidFamily']:checked").val());
+        formData.append("ShahidRelationship", $('#ShahidRelationship').val());
+        formData.append("TheIdentifier", $('#TheIdentifier').val());
+
+        $.ajax({
+            type: 'POST',
+            url: "/Students/AddStudent",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                alert(result.message);
+            },
+            error: function (result) {
+                alert(result.message);
+            }
+        })
+    }
+    //********************************************
+
+</script>
+<script>
+    $(document).ready(function () {
+        var $window = $(window);
+        
+        function checkWidth() {
+            var windowsize = $window.width();
+            if (windowsize < 800) {
+                //if the window is greater than 440px wide then turn on jScrollPane..
+                $('#imgdiv').insertBefore('#codiv');
+            } else {
+                $('#codiv').insertBefore('#imgdiv');
+            }
+        }
+        // Execute on load
+        checkWidth();
+        // Bind event listener
+        $(window).resize(checkWidth);
+
+        var MaritalStatusNo = $('#MaritalStatusNo').val();
+        var MaritalStatusYes = $('#MaritalStatusYes').val();
+        //alert(MaritalStatusNo);
+        //alert(MaritalStatusYes);
+        if ((MaritalStatusNo == 'false' && MaritalStatusYes == 'true') || (MaritalStatusNo == 'No' && MaritalStatusYes == 'No') ) {
+            $('#family').css('display', 'none');
+            $("#WifeDetails").prop('required', false);
+            $("#ChildernNumber").prop('required', false);
+            $("#WifeName").prop('required', false);
+        } else if (MaritalStatusNo == 'true' && MaritalStatusYes == 'false'){
+            $('#family').css('display', 'block');
+            $("#WifeDetails").prop('required', true);
+            $("#ChildernNumber").prop('required', true);
+            $("#WifeName").prop('required', true);
+        }
+        //
+        $("input[name='MarriageStatus']").on('click', function () {
+
+            var inputValue = $(this).attr("value");
+            alert(inputValue);
+            if (inputValue == 'false') {
+                $('#family').css('display', 'none');
+                $("#WifeDetails").prop('required', false);
+                $("#ChildernNumber").prop('required', false);
+                $("#WifeName").prop('required', false);
+            } else {
+                $('#family').css('display', 'block');
+                $("#WifeDetails").prop('required', true);
+                $("#ChildernNumber").prop('required', true);
+                $("#WifeName").prop('required', true);
+            }
+        });
+        $("input[name='ShahidFamily']").on('click', function () {
+
+            var inputValue = $(this).attr("value");
+
+            if (inputValue == 'false') {
+                $('#Shahid').css('display', 'none');
+                $("#ShahidRelationship").prop('required', false);
+
+            } else {
+                $('#Shahid').css('display', 'block');
+                $("#ShahidRelationship").prop('required', true);
+
+            }
+        });
+    });
+
+</script>

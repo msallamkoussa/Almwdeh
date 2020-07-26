@@ -1,0 +1,178 @@
+﻿@model Almwdeh.Models.StudentsUniversitiesTbl
+
+
+<div class="right_col" role="main">
+    <div class="row">
+
+
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>@Almwdeh.Resources.StudentResource.UniversityInfo</h2>
+                    <ul class="nav navbar-right panel_toolbox" style="display:inline-grid;text-align:end">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form id="UniversityInfo" data-parsley-validate class="form-horizontal" style="direction:rtl;font-size:large" onsubmit="EditStudentUniversityInfoForm()" method="post">
+
+                        <div class="row">
+
+                            <div class="col-md-6 col-sm-6">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.AcademicDegree <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        @Html.DropDownList("AcademicDegree", null, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.UniversityName <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="UniversityName" name="UniversityName" value="@Model.UniversityName" required="required" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.FieldOfStudy <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        @Html.DropDownList("FieldOfStudy", null, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.StudentUniversityNum <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="StudentUniversityNumber" value="@Model.StudentUniversityNumber" required="required" class="form-control ">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.StartAcademicYearDare <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input id="StartAcademicYearDate" class="date-picker form-control" value="@ViewBag.StartAcademicYearDate" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                        <script>
+                                            function timeFunctionLong(input) {
+                                                setTimeout(function () {
+                                                    input.type = 'text';
+                                                }, 60000);
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.GraduationStatues <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        @Html.DropDownList("GraduationStatues", null, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.GraduationYear <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input id="GraduationYear"  value="@ViewBag.GraduationYear" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                        <script>
+                                            function timeFunctionLong(input) {
+                                                setTimeout(function () {
+                                                    input.type = 'text';
+                                                }, 60000);
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.AverageScore <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="text" id="AverageScore" value="@Model.AverageScore" required="required" class="form-control ">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-4 col-sm-4 label-align">
+                                        @Almwdeh.Resources.StudentResource.CertificateFile <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input type="file" id="CertificateFile"  required="required" class="form-control" style="direction:ltr">
+                                    </div>
+                                </div>
+                                <!-- #region SampleRegion -->
+                                <!-- #endregion -->
+
+                            </div>
+
+                        </div>
+                        <input type="hidden" value=@Almwdeh.Common.MySession.Current.UserID.ToString() id="UserAccessIDs" />
+
+                        <div class="ln_solid"></div>
+                        <div class="item form-group" style="direction:ltr;float:left">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+
+                                <input type="submit" class="btn btn-primary" value="@Almwdeh.Resources.Resource.save">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script>
+    function EditStudentUniversityInfoForm() {
+        alert($('#UserAccessIDs').val());
+
+        var formData = new FormData();
+        var files = $("#CertificateFile").get(0).files;
+        formData.append("CertificateFile", files[0]);
+
+        formData.append("UserAccessIDs", $('#UserAccessIDs').val());
+        formData.append("AcademicDegree", $("#AcademicDegree").val());
+        formData.append("UniversityName", $('#UniversityName').val());
+        formData.append("FieldOfStudy", $('#FieldOfStudy').val());
+        formData.append("StudentUniversityNumber", $('#StudentUniversityNumber').val());
+        formData.append("StartAcademicYearDate", $('#StartAcademicYearDate').val());
+        formData.append("GraduationStatues", $('#GraduationStatues').val());
+        formData.append("GraduationYear", $('#GraduationYear').val());
+        formData.append("AverageScore", $('#AverageScore').val());
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/Students/AddStudentUniversity",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                alert(result.message);
+            },
+            error: function (result) {
+                alert(result.message);
+            }
+        })
+    }
+</script>
+
+
